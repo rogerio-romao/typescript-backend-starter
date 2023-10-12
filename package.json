@@ -1,0 +1,14 @@
+{
+  "name": "typescript-starter-config-lint",
+  "version": "1.0.0",
+  "description": "Starter config and linting for typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rogerio Romao",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
