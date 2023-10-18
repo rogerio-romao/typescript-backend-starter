@@ -3,11 +3,21 @@ module.exports = {
         es2024: true,
         node: true,
     },
-    plugins: ['unicorn', 'import', 'eslint-comments', 'sonarjs', 'promise'],
+    root: true,
+    plugins: [
+        'unicorn',
+        'import',
+        'eslint-comments',
+        'sonarjs',
+        'promise',
+        '@typescript-eslint',
+    ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
+        project: true,
+        tsconfigRootDir: __dirname,
     },
     rules: {
         // Possible Errors
