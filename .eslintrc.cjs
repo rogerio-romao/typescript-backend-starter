@@ -386,5 +386,33 @@ module.exports = {
         'promise/param-names': 'error',
         'promise/prefer-await-to-callbacks': 'warn',
         'promise/valid-params': 'error',
+        // TypeScript rules
+        '@typescript-eslint/adjacent-overload-signatures': 'warn',
+        '@typescript-eslint/array-type': ['warn', { default: 'array-simple' }],
+        '@typescript-eslint/await-thenable': 'warn',
+        '@typescript-eslint/ban-ts-comment': [
+            'warn',
+            {
+                'ts-expect-error': 'allow-with-description',
+                'ts-ignore': true,
+                'ts-nocheck': true,
+                'ts-check': false,
+                minimumDescriptionLength: 3,
+            },
+        ],
+        '@typescript-eslint/ban-tslint-comment': 'warn',
+        '@typescript-eslint/ban-types': 'error',
+        '@typescript-eslint/consistent-generic-constructors': [
+            'error',
+            'type-annotation',
+        ],
+        '@typescript-eslint/consistent-indexed-object-style': 'error',
+        '@typescript-eslint/consistent-type-assertions': [
+            'warn',
+            { assertionStyle: 'as', objectLiteralTypeAssertions: 'allow' },
+        ],
+        '@typescript-eslint/consistent-type-definitions': ['warn', 'interface'],
+        '@typescript-eslint/consistent-type-exports': 'error',
+        '@typescript-eslint/consistent-type-imports': 'error',
     },
 };
