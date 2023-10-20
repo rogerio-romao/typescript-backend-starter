@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "lint": "eslint --ext .ts src",
-        "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --format=esm",
+        "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --format=esm --target=es2017 --minify --sourcemap",
         "start": "node dist/index.js",
         "dev:tsc": "tsc --watch --preserveWatchOutput --noEmit",
         "dev:node": "node --watch dist/index.js",
