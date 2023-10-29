@@ -6,6 +6,7 @@
     "type": "module",
     "scripts": {
         "lint": "eslint --ext .ts src",
+        "lint:fix": "eslint --fix --ext .ts src",
         "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --format=esm --target=es2017 --minify --sourcemap",
         "test": "vitest",
         "test:ci": "vitest --run",
