@@ -1,7 +1,7 @@
 {
-    "name": "typescript-starter-config-lint",
+    "name": "typescript-backend-starter",
     "version": "1.0.0",
-    "description": "Starter config and linting for typescript",
+    "description": "Starter config and linting for typescript backend",
     "main": "index.js",
     "type": "module",
     "scripts": {
