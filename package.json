@@ -29,7 +29,7 @@
         "eslint-plugin-promise": "^6.1.1",
         "eslint-plugin-sonarjs": "^0.23.0",
         "eslint-plugin-unicorn": "^50.0.1",
-        "npm-run-all2": "^6.0.0",
+        "npm-run-all2": "^6.1.2",
         "typescript": "^5.3.3",
         "vitest": "^1.2.2"
     },
