@@ -27,7 +27,7 @@
         "eslint-plugin-eslint-comments": "^3.2.0",
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-promise": "^6.1.1",
-        "eslint-plugin-sonarjs": "^0.24.0",
+        "eslint-plugin-sonarjs": "^0.25.0",
         "eslint-plugin-unicorn": "^51.0.1",
         "npm-run-all2": "^6.1.2",
         "typescript": "^5.3.3",
