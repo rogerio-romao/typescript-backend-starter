@@ -3152,9 +3152,15 @@ snapshots:
     dependencies:
       is-number: 7.0.0
 
+<<<<<<< renovate/typescript-5.x-lockfile
   ts-api-utils@1.3.0(typescript@5.4.5):
     dependencies:
       typescript: 5.4.5
+=======
+  ts-api-utils@1.3.0(typescript@5.4.4):
+    dependencies:
+      typescript: 5.4.4
+>>>>>>> main
 
   tsconfig-paths@3.15.0:
     dependencies:
@@ -3283,8 +3289,13 @@ snapshots:
       pathe: 1.1.2
       picocolors: 1.0.0
       std-env: 3.7.0
+<<<<<<< renovate/typescript-5.x-lockfile
       strip-literal: 2.1.0
       tinybench: 2.8.0
+=======
+      strip-literal: 2.0.0
+      tinybench: 2.6.0
+>>>>>>> main
       tinypool: 0.8.4
       vite: 5.2.10(@types/node@20.12.7)
       vite-node: 1.5.2(@types/node@20.12.7)
