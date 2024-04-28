@@ -1,23 +1,41 @@
-module.exports = {
-    env: {
-        es2024: true,
-        node: true,
+import eslintCommentsPlugin from 'eslint-plugin-eslint-comments';
+import importPlugin from 'eslint-plugin-import';
+import promisePlugin from 'eslint-plugin-promise';
+import sonarJsPlugin from 'eslint-plugin-sonarjs';
+import unicornPlugin from 'eslint-plugin-unicorn';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+
+// TODO: there are some rules commented out waiting for the plugins to be updated to support ESLint 9 (sonar and import plugins)
+
+export default tseslint.config({
+    files: ['src/**/*.ts', 'src/**/*.tsx'],
+    plugins: {
+        unicorn: unicornPlugin,
+        import: importPlugin,
+        'eslint-comments': eslintCommentsPlugin,
+        sonarjs: sonarJsPlugin,
+        promise: promisePlugin,
+        '@typescript-eslint': tseslint.plugin,
     },
-    root: true,
-    plugins: [
-        'unicorn',
-        'import',
-        'eslint-comments',
-        'sonarjs',
-        'promise',
-        '@typescript-eslint',
-    ],
-    parser: '@typescript-eslint/parser',
-    parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        project: true,
-        tsconfigRootDir: __dirname,
+    languageOptions: {
+        parser: tseslint.parser,
+        globals: {
+            ...globals.browser,
+            ...globals.node,
+        },
+        parserOptions: {
+            project: true,
+            tsconfigRootDir: import.meta.dirname,
+            ecmaVersion: 'latest',
+            ecmaFeatures: {
+                jsx: true,
+            },
+            sourceType: 'module',
+        },
+    },
+    linterOptions: {
+        reportUnusedDisableDirectives: 'warn',
     },
     rules: {
         // Possible Errors
@@ -320,12 +338,12 @@ module.exports = {
             { max: 10, ignoreTypeImports: true },
         ],
         'import/named': 'error',
-        'import/namespace': 'error',
-        'import/newline-after-import': 'warn',
+        // 'import/namespace': 'error',
+        // 'import/newline-after-import': 'warn',
         'import/no-absolute-path': 'error',
-        'import/no-mutable-exports': 'error',
-        'import/no-named-as-default-member': 'error',
-        'import/no-named-as-default': 'error',
+        // 'import/no-mutable-exports': 'error',
+        // 'import/no-named-as-default-member': 'error',
+        // 'import/no-named-as-default': 'error',
         'import/no-named-default': 'error',
         'import/no-self-import': 'error',
         'import/no-unresolved': 'error',
@@ -350,9 +368,9 @@ module.exports = {
         'sonarjs/no-collection-size-mischeck': 'error',
         'sonarjs/no-duplicated-branches': 'error',
         'sonarjs/no-element-overwrite': 'warn',
-        'sonarjs/no-empty-collection': 'warn',
-        'sonarjs/no-extra-arguments': 'error',
-        'sonarjs/no-gratuitous-expressions': 'error',
+        // 'sonarjs/no-empty-collection': 'warn',
+        // 'sonarjs/no-extra-arguments': 'error',
+        // 'sonarjs/no-gratuitous-expressions': 'error',
         'sonarjs/no-identical-expressions': 'error',
         'sonarjs/no-identical-functions': 'error',
         'sonarjs/no-ignored-return': 'error',
@@ -361,8 +379,8 @@ module.exports = {
         'sonarjs/no-nested-template-literals': 'warn',
         'sonarjs/no-redundant-boolean': 'warn',
         'sonarjs/no-small-switch': 'error',
-        'sonarjs/no-unused-collection': 'warn',
-        'sonarjs/no-use-of-empty-return-value': 'warn',
+        // 'sonarjs/no-unused-collection': 'warn',
+        // 'sonarjs/no-use-of-empty-return-value': 'warn',
         'sonarjs/non-existent-operator': 'error',
         // Promise rules
         'promise/always-return': 'error',
@@ -498,4 +516,4 @@ module.exports = {
         '@typescript-eslint/no-useless-constructor': 'error',
         '@typescript-eslint/require-await': 'error',
     },
-};
+});
