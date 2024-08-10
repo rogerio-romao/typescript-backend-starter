@@ -10,6 +10,7 @@
         "resolveJsonModule": true, // allow JSON files to be imported
         "moduleDetection": "force", // force TypeScript to use the module specified in tsconfig.json
         /* Strictness */
+        "isolatedModules": true, // ensures each file is treated as a separate module
         "strict": true, // enables all strict type checking options
         "noUncheckedIndexedAccess": true, // disallows unchecked indexed access to objects and arrays
         /* If transpiling with TypeScript: */
