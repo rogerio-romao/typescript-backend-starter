@@ -1,23 +1,26 @@
 {
     "compilerOptions": {
         /* Base Options: */
-        "esModuleInterop": true, // smooths out differences between CommonJS and ES Modules
+        "esModuleInterop": true, // smooths out differences between CommonJS and ES Modules - should always be on
         "skipLibCheck": true, // skips checking of all declaration files (*.d.ts) (node_modules wont be checked)
         "target": "es2022", // most browsers will support
-        "verbatimModuleSyntax": true, // ensure use of right syntax for import/export
+        "verbatimModuleSyntax": true, // ensure use of right syntax for import/export (discard type only imports)
         "allowJs": true, // allow JavaScript files to be imported
         "allowImportingTsExtensions": true,
         "resolveJsonModule": true, // allow JSON files to be imported
         "moduleDetection": "force", // force TypeScript to use the module specified in tsconfig.json
         /* Strictness */
-        "isolatedModules": true, // ensures each file is treated as a separate module
+        "isolatedModules": true, // ensures each file is treated as a separate module, deactivates certain typescript features that some bundlers don't support
         "strict": true, // enables all strict type checking options
         "noUncheckedIndexedAccess": true, // disallows unchecked indexed access to objects and arrays
         /* If transpiling with TypeScript: */
+        "exactOptionalPropertyTypes": true, // ensures that optional properties cant be set to a different type than the one specified
         "moduleResolution": "Bundler", // ensures TypeScript output can be consumed by Node.js, change this to Bundler if using a bundler, Deno, Bun, tsx, next, remix, svelte, etc.
-        "module": "ESNext", // ensures TypeScript output can be consumed by Node.js, change this to ESNext if using a bundler, Deno, Bun, tsx, next, remix, svelte, etc.
+        "module": "Preserve", // ensures TypeScript output can be consumed by Node.js, change this to Preserve if using a bundler, Deno, Bun, tsx, next, remix, svelte, etc.
         "noEmit": true, // if you're using a bundler, set this to true
+        "sourceMap": true, // run node with --enable-source-maps to link the output js to the ts files
         "lib": ["es2022"], // if running on dom use ["es2022", "dom", "dom.iterable"]
-        "outDir": "./dist" // if you're using a bundler, set this to the output directory of your bundler
+        "outDir": "./dist", // if you're using a bundler, set this to the output directory of your bundler
+        "rootDir": "./src"
     }
 }

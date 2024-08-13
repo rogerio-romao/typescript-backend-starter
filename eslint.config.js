@@ -427,7 +427,7 @@ export default tseslint.config({
             'error',
             { allowDirectConstAssertionInArrowFunctions: false },
         ],
-        '@typescript-eslint/method-signature-style': 'warn',
+        '@typescript-eslint/method-signature-style': ['error', 'property'],
         '@typescript-eslint/no-base-to-string': 'error',
         '@typescript-eslint/no-confusing-non-null-assertion': 'warn',
         '@typescript-eslint/no-confusing-void-expression': [
