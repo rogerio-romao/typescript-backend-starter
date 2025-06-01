@@ -579,7 +579,7 @@ export default tseslint.config({
                 allowBoolean: false,
                 allowNullish: false,
                 allowNumberAndString: false,
-                allowRegexp: false,
+                allowRegExp: false,
                 skipCompoundAssignments: false,
             },
         ],
