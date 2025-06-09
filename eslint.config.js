@@ -1,10 +1,12 @@
-import json from '@eslint/json';
+import eslintJsonPlugin from '@eslint/json';
 import eslintCommentsPlugin from 'eslint-plugin-eslint-comments';
 import importPlugin from 'eslint-plugin-import';
+import packageJson from 'eslint-plugin-package-json';
 import promisePlugin from 'eslint-plugin-promise';
 import sonarJsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';
+import jsoncParser from 'jsonc-eslint-parser';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config([
@@ -809,7 +811,10 @@ export default tseslint.config([
         },
     },
     {
-        plugins: { json },
+        plugins: { '@eslint/json': eslintJsonPlugin },
+        languageOptions: {
+            parser: jsoncParser,
+        },
         files: ['**/*.json'],
         ignores: [
             '**/node_modules/**',
@@ -818,44 +823,76 @@ export default tseslint.config([
             'package-lock.json',
             'tsconfig.json',
             'tsconfig.*.json',
+            '.vscode/*.json',
         ],
-        language: 'json/json',
         rules: {
-            'json/no-duplicate-keys': 'error',
-            'json/no-empty-keys': 'warn',
-            'json/no-unsafe-values': 'error',
-            'json/no-unnormalized-keys': 'error',
-            'json/sort-keys': 'off', // doesnt auto-fix it
-            'json/top-level-interop': 'error',
+            '@eslint/json/no-duplicate-keys': 'error',
+            '@eslint/json/no-empty-keys': 'warn',
+            '@eslint/json/no-unsafe-values': 'error',
+            '@eslint/json/no-unnormalized-keys': 'error',
+            '@eslint/json/sort-keys': 'off', // doesnt auto-fix it
+            '@eslint/json/top-level-interop': 'error',
         },
     },
     {
-        plugins: { json },
+        files: ['package.json'],
+        plugins: {
+            'package-json': packageJson,
+        },
+        rules: {
+            'package-json/no-empty-fields': 'warn',
+            'package-json/no-redundant-files': 'error',
+            'package-json/order-properties': 'warn',
+            'package-json/repository-shorthand': 'error',
+            'package-json/require-author': 'warn',
+            'package-json/require-description': 'error',
+            'package-json/require-engines': 'off',
+            'package-json/require-files': 'off',
+            'package-json/require-keywords': 'off',
+            'package-json/require-name': 'error',
+            'package-json/require-type': 'error',
+            'package-json/require-types': 'off',
+            'package-json/require-version': 'warn',
+            'package-json/restrict-dependency-ranges': 'off',
+            'package-json/sort-collections': 'warn',
+            'package-json/unique-dependencies': 'error',
+            'package-json/valid-local-dependency': 'error',
+            'package-json/valid-name': 'error',
+            'package-json/valid-package-definition': 'warn',
+            'package-json/valid-repository-directory': 'warn',
+            'package-json/valid-version': 'error',
+        },
+    },
+
+    {
+        plugins: { '@eslint/json': eslintJsonPlugin },
         files: ['**/*.json5'],
-        language: 'json/json5',
-        rules: {
-            'json/no-duplicate-keys': 'error',
-            'json/no-empty-keys': 'warn',
-            'json/no-unsafe-values': 'error',
-            'json/no-unnormalized-keys': 'error',
-            'json/sort-keys': 'off', // doesnt auto-fix it
-            'json/top-level-interop': 'error',
-        },
-    },
-    {
-        plugins: { json },
-        files: ['**/*.jsonc', '.vscode/*.json'],
-        language: 'json/jsonc',
         languageOptions: {
+            parser: jsoncParser,
             allowTrailingCommas: true,
         },
         rules: {
-            'json/no-duplicate-keys': 'error',
-            'json/no-empty-keys': 'warn',
-            'json/no-unsafe-values': 'error',
-            'json/no-unnormalized-keys': 'error',
-            'json/sort-keys': 'off', // doesnt auto-fix it
-            'json/top-level-interop': 'error',
+            '@eslint/json/no-duplicate-keys': 'error',
+            '@eslint/json/no-empty-keys': 'warn',
+            '@eslint/json/no-unsafe-values': 'error',
+            '@eslint/json/no-unnormalized-keys': 'error',
+            '@eslint/json/sort-keys': 'off', // doesnt auto-fix it
+            '@eslint/json/top-level-interop': 'error',
+        },
+    },
+    {
+        plugins: { '@eslint/json': eslintJsonPlugin },
+        files: ['**/*.jsonc', '.vscode/*.json'],
+        languageOptions: {
+            parser: jsoncParser,
+        },
+        rules: {
+            '@eslint/json/no-duplicate-keys': 'error',
+            '@eslint/json/no-empty-keys': 'warn',
+            '@eslint/json/no-unsafe-values': 'error',
+            '@eslint/json/no-unnormalized-keys': 'error',
+            '@eslint/json/sort-keys': 'off', // doesnt auto-fix it
+            '@eslint/json/top-level-interop': 'error',
         },
     },
 ]);
