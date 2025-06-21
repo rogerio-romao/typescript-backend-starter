@@ -1,4 +1,5 @@
 import eslintJsonPlugin from '@eslint/json';
+import errorCause from 'eslint-plugin-error-cause';
 import eslintCommentsPlugin from 'eslint-plugin-eslint-comments';
 import importPlugin from 'eslint-plugin-import';
 import packageJson from 'eslint-plugin-package-json';
@@ -18,6 +19,7 @@ export default tseslint.config([
             'eslint-comments': eslintCommentsPlugin,
             sonarjs: sonarJsPlugin,
             promise: promisePlugin,
+            'error-cause': errorCause,
             '@typescript-eslint': tseslint.plugin,
         },
         languageOptions: {
@@ -869,6 +871,8 @@ export default tseslint.config([
             '@typescript-eslint/no-use-before-define': 'warn',
             '@typescript-eslint/no-useless-constructor': 'error',
             '@typescript-eslint/require-await': 'error',
+            // Error cause
+            'error-cause/no-swallowed-error-cause': 'warn',
         },
     },
     {
