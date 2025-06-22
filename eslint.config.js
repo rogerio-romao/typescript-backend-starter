@@ -1,5 +1,4 @@
 import eslintJsonPlugin from '@eslint/json';
-import { warn } from 'console';
 import errorCause from 'eslint-plugin-error-cause';
 import eslintCommentsPlugin from 'eslint-plugin-eslint-comments';
 import importPlugin from 'eslint-plugin-import';
