@@ -7,8 +7,6 @@ TypeScript, with:
 -   Comprehensive ESLint configuration (very strict, custom config)
 -   Built-in Vitest support for unit testing
 
-[![Build Status](https://app.travis-ci.com/rogerio-romao/typescript-backend-starter.svg?token=q1y9rjFCNJpSjtuz4pWy&branch=main)](https://app.travis-ci.com/rogerio-romao/typescript-backend-starter)
-
 ---
 
 ## 📦 Prerequisites
@@ -126,6 +124,29 @@ Key settings:
 -   arrowParens: always include parentheses around arrow function arguments
 -   trailingComma: add trailing commas where valid in ES5
 -   printWidth, tabWidth, useTabs: control line length and indentation
+
+## 🔄 Continuous Integration
+
+This project uses GitHub Actions for CI/CD automation. The workflows are defined
+in the `.github/workflows` directory:
+
+### Main Workflow
+
+The main workflow runs on push to main branch and pull requests:
+
+-   **ESLint**: Enforces code quality and style standards
+-   **Unit Tests**: Runs the test suite with Vitest
+
+The CI process helps catch issues early by validating each change against our
+quality standards before merging.
+
+### Dependency Updates
+
+A scheduled workflow runs periodically to:
+
+-   Check for outdated dependencies using Dependabot
+-   Automatically create PRs for security fixes and minor updates
+-   Run tests to verify compatibility with updated packages
 
 ## 📄 License
 
