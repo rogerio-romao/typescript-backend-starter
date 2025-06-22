@@ -900,7 +900,7 @@ export default tseslint.config([
                 'asc',
                 {
                     caseSensitive: false,
-                    natural: false,
+                    natural: true,
                 },
             ],
         },
