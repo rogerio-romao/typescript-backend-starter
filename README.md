@@ -112,6 +112,35 @@ Using Vitest for unit tests. A sample test lives under /tests
 "test:ci": "vitest --run"
 ```
 
+## 🪝 Git Hooks
+
+This project uses [Husky](https://typicode.github.io/husky/) and
+[lint-staged](https://github.com/okonet/lint-staged) to ensure code quality
+before commits:
+
+### Pre-commit Hook
+
+The pre-commit hook automatically runs on staged files:
+
+-   **ESLint**: Fixes linting issues automatically with `--fix`
+-   **Tests**: Runs the full test suite with `pnpm test:ci`
+
+Configuration is in `package.json`:
+
+```jsonc
+"lint-staged": {
+  "*.{js,ts,json}": [
+    "eslint --fix",
+    "pnpm test:ci"
+  ]
+}
+```
+
+### Setup
+
+Husky hooks are automatically installed when you run `pnpm install` (via the
+`prepare` script). The hooks are stored in the `.husky/` directory.
+
 ## 🎨 Prettier Configuration
 
 Using Prettier to enforce a consistent code style. All options live in
