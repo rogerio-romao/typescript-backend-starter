@@ -33,7 +33,7 @@
         "@eslint/json": "^0.12.0",
         "@gitbutler/no-relative-imports": "^0.0.3",
         "@types/node": "^22.13.15",
-        "esbuild": "^0.25.2",
+        "esbuild": "^0.25.5",
         "eslint": "^9.28.0",
         "eslint-plugin-error-cause": "^1.2.9",
         "eslint-plugin-eslint-comments": "^3.2.0",
