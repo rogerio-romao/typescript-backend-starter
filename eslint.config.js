@@ -4,9 +4,9 @@ import errorCause from 'eslint-plugin-error-cause';
 import eslintCommentsPlugin from 'eslint-plugin-eslint-comments';
 import importPlugin from 'eslint-plugin-import';
 import packageJson from 'eslint-plugin-package-json';
+import perfectionist from 'eslint-plugin-perfectionist';
 import promisePlugin from 'eslint-plugin-promise';
 import sonarJsPlugin from 'eslint-plugin-sonarjs';
-import sortKeysFix from 'eslint-plugin-sort-keys-fix';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import jsoncParser from 'jsonc-eslint-parser';
@@ -38,8 +38,8 @@ export default tseslint.config([
             promise: promisePlugin,
             'error-cause': errorCause,
             '@typescript-eslint': tseslint.plugin,
-            'sort-keys-fix': sortKeysFix,
             'no-relative-import-paths': noRelativeImportPaths,
+            perfectionist,
         },
         languageOptions: {
             parser: tseslint.parser,
@@ -194,7 +194,7 @@ export default tseslint.config([
             'no-continue': 'off',
             'no-delete-var': 'error',
             'no-div-regex': 'error',
-            'no-else-return': ['error', { allowElseIf: false }],
+            'no-else-return': ['error', { allowElseIf: true }],
             'no-empty': ['error', { allowEmptyCatch: false }],
             'no-empty-function': 'off', // handled by @typescript-eslint/no-empty-function
             'no-empty-static-block': 'error',
@@ -621,7 +621,7 @@ export default tseslint.config([
             'sonarjs/csrf': 'error',
             'sonarjs/cyclomatic-complexity': ['warn', { threshold: 15 }],
             'sonarjs/duplicates-in-character-class': 'error',
-            'sonarjs/elseif-without-else': 'warn',
+            'sonarjs/elseif-without-else': 'off', // not great if the last statement is a return
             'sonarjs/empty-string-repetition': 'warn',
             'sonarjs/encryption-secure-mode': 'error',
             'sonarjs/existing-groups': 'error',
@@ -717,7 +717,7 @@ export default tseslint.config([
             'promise/spec-only': 'error',
             'promise/valid-params': 'error',
             // TypeScript rules
-            '@typescript-eslint/adjacent-overload-signatures': 'warn',
+            '@typescript-eslint/adjacent-overload-signatures': 'off', // conflicts with perfectionist/sort-interfaces
             '@typescript-eslint/array-type': [
                 'warn',
                 { default: 'array-simple' },
@@ -896,17 +896,55 @@ export default tseslint.config([
             '@typescript-eslint/require-await': 'error',
             // Error cause
             'error-cause/no-swallowed-error-cause': 'warn',
-            // Sort keys
-            'sort-keys-fix/sort-keys-fix': [
-                'error',
-                'asc',
-                {
-                    caseSensitive: false,
-                    natural: true,
-                },
-            ],
             // No relative import paths
             'no-relative-import-paths/no-relative-import-paths': 'error',
+            // Perfectionist rules
+            'perfectionist/sort-array-includes': [
+                'warn',
+                { type: 'natural', partitionByNewLine: true },
+            ],
+            'perfectionist/sort-classes': ['warn', { type: 'natural' }],
+            'perfectionist/sort-exports': [
+                'warn',
+                {
+                    type: 'natural',
+                },
+            ],
+            'perfectionist/sort-interfaces': [
+                'warn',
+                {
+                    type: 'natural',
+                    groups: ['required-property', 'optional-property'],
+                },
+            ],
+            'perfectionist/sort-maps': ['warn', { type: 'natural' }],
+            'perfectionist/sort-objects': [
+                'warn',
+                {
+                    type: 'natural',
+                    partitionByNewLine: true,
+                },
+            ],
+            'perfectionist/sort-object-types': [
+                'warn',
+                {
+                    type: 'natural',
+                    groups: ['required-property', 'optional-property'],
+                },
+            ],
+            'perfectionist/sort-sets': ['warn', { type: 'natural' }],
+            'perfectionist/sort-switch-case': [
+                'warn',
+                {
+                    type: 'natural',
+                },
+            ],
+            'perfectionist/sort-union-types': [
+                'warn',
+                {
+                    type: 'natural',
+                },
+            ],
         },
     },
     {
