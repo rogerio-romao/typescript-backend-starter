@@ -1,4 +1,5 @@
 import eslintJsonPlugin from '@eslint/json';
+import noRelativeImportPaths from '@gitbutler/no-relative-imports';
 import errorCause from 'eslint-plugin-error-cause';
 import eslintCommentsPlugin from 'eslint-plugin-eslint-comments';
 import importPlugin from 'eslint-plugin-import';
@@ -38,6 +39,7 @@ export default tseslint.config([
             'error-cause': errorCause,
             '@typescript-eslint': tseslint.plugin,
             'sort-keys-fix': sortKeysFix,
+            'no-relative-import-paths': noRelativeImportPaths,
         },
         languageOptions: {
             parser: tseslint.parser,
@@ -532,7 +534,7 @@ export default tseslint.config([
             'import/no-relative-parent-imports': 'off',
             'import/no-restricted-paths': 'off',
             'import/no-self-import': 'error',
-            'import/no-unresolved': 'error',
+            'import/no-unresolved': 'off', // gives a lot of false positives with bundlers
             'import/no-useless-path-segments': 'error',
             'import/no-webpack-loader-syntax': 'warn',
             'import/consistent-type-specifier-style': 'off', // handled by typescript
@@ -903,6 +905,8 @@ export default tseslint.config([
                     natural: true,
                 },
             ],
+            // No relative import paths
+            'no-relative-import-paths/no-relative-import-paths': 'error',
         },
     },
     {
