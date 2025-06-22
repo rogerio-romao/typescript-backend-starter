@@ -1,16 +1,33 @@
 import eslintJsonPlugin from '@eslint/json';
+import { warn } from 'console';
 import errorCause from 'eslint-plugin-error-cause';
 import eslintCommentsPlugin from 'eslint-plugin-eslint-comments';
 import importPlugin from 'eslint-plugin-import';
 import packageJson from 'eslint-plugin-package-json';
 import promisePlugin from 'eslint-plugin-promise';
 import sonarJsPlugin from 'eslint-plugin-sonarjs';
+import sortKeysFix from 'eslint-plugin-sort-keys-fix';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import jsoncParser from 'jsonc-eslint-parser';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config([
+    {
+        ignores: [
+            '**/node_modules/**',
+            '**/dist/**',
+            '**/build/**',
+            '**/coverage/**',
+            '**/.next/**',
+            '**/out/**',
+            '**/.eslintcache',
+            'package-lock.json',
+            'pnpm-lock.yaml',
+            '**/tsconfig.json',
+            '**/playwright-report/**',
+        ],
+    },
     {
         files: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.js', 'src/**/*.jsx'],
         plugins: {
@@ -21,6 +38,7 @@ export default tseslint.config([
             promise: promisePlugin,
             'error-cause': errorCause,
             '@typescript-eslint': tseslint.plugin,
+            'sort-keys-fix': sortKeysFix,
         },
         languageOptions: {
             parser: tseslint.parser,
@@ -306,7 +324,11 @@ export default tseslint.config([
                     allowSeparatedGroups: true,
                 },
             ],
-            'sort-keys': 'off',
+            'sort-keys': [
+                'off',
+                'asc',
+                { caseSensitive: false, natural: true },
+            ],
             'sort-vars': 'off',
             strict: 'off',
             'symbol-description': 'error',
@@ -873,6 +895,15 @@ export default tseslint.config([
             '@typescript-eslint/require-await': 'error',
             // Error cause
             'error-cause/no-swallowed-error-cause': 'warn',
+            // Sort keys
+            'sort-keys-fix/sort-keys-fix': [
+                'error',
+                'asc',
+                {
+                    caseSensitive: false,
+                    natural: false,
+                },
+            ],
         },
     },
     {
