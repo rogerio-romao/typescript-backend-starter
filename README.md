@@ -1,4 +1,4 @@
-# typescript-backend-starter
+# typescript-backend-starter v2.0.0
 
 A minimal, opinionated starter template for building Node.js backends in
 TypeScript, with:
@@ -60,6 +60,20 @@ pnpm run build
 ```sh
 pnpm run start
 ```
+
+---
+
+## 📦 Features
+
+-   Automated changelog generation and release notes using
+    [changelogen](https://github.com/unjs/changelogen).
+-   Zero-config TypeScript setup
+-   Strict, extensible ESLint configuration
+-   Pre-configured Vitest for unit testing
+-   Prettier for code formatting
+-   Husky & lint-staged for pre-commit quality checks
+-   Environment variable validation with Zod
+-   GitHub Actions for CI/CD
 
 ---
 
