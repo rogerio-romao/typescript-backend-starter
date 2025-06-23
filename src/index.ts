@@ -1,8 +1,5 @@
-// packages
-import { consola } from 'consola';
-
-// config
-import env from './config/parsedEnv';
+import env from '@/config/parsedEnv';
+import consola from '@/lib/consola';
 
 export default function sum(a: number, b: number): number {
     return a + b;
