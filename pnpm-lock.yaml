@@ -11,6 +11,9 @@ importers:
       consola:
         specifier: ^3.4.2
         version: 3.4.2
+      zod:
+        specifier: ^3.25.67
+        version: 3.25.67
     devDependencies:
       '@eslint/json':
         specifier: ^0.12.0

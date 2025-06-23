@@ -23,7 +23,7 @@
         "sourceMap": true, // run node with --enable-source-maps to link the output js to the ts files
         "lib": ["es2022"], // if running on dom use ["es2022", "dom", "dom.iterable"]
         "outDir": "./dist", // if you're using a bundler, set this to the output directory of your bundler
-        "rootDir": "./src",
+        "rootDir": "./",
         "baseUrl": "./" // base directory to resolve non-relative module names
     },
     "exclude": ["node_modules", "eslint.config.js", "dist"]
