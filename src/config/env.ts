@@ -21,10 +21,11 @@ function parseEnv<T extends ZodRawShape>(
         e.stack = '';
         throw e;
     }
+    return result.data; // Return parsed environment variables
 }
 
-parseEnv(envSchema);
+const parsedEnv = parseEnv(envSchema); // Store parsed environment variables
 
-export default envSchema.parse(process.env);
+export default parsedEnv; // Export the parsed environment variables
 
 // this file based on a video by CJ on the Syntax YouTube channel: https://www.youtube.com/watch?v=DK93dqmJJYg&t=3914s
