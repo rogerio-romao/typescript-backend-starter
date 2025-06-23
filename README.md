@@ -167,6 +167,46 @@ Key settings:
 -   trailingComma: add trailing commas where valid in ES5
 -   printWidth, tabWidth, useTabs: control line length and indentation
 
+## 🌱 Environment Variable Validation
+
+This project uses [Zod](https://zod.dev/) to validate environment variables at
+startup, ensuring your app only runs with the required configuration.
+
+### How it works
+
+-   The schema for required environment variables is defined in
+    [`src/config/env.ts`](src/config/env.ts) using Zod.
+-   On startup, the app parses and validates `process.env` against this schema.
+-   If any variable is missing or invalid (e.g., `PORT` is not a number or out
+    of range), the app logs a clear error and exits immediately.
+-   This prevents runtime errors due to misconfiguration.
+
+Example schema:
+
+```typescript
+const envSchema = z.object({
+    NODE_ENV: z.string(),
+    PORT: z.coerce.number().min(1024).max(65_535),
+});
+```
+
+### Error reporting
+
+If validation fails, a detailed message is printed to the console, listing all
+issues with the environment variables. This helps you quickly identify and fix
+configuration problems.
+
+### Usage
+
+-   Set your environment variables (e.g., in a `.env` file or via your process
+    manager).
+-   The app will not start unless all required variables are present and valid.
+
+**Tip:** `NODE_ENV` is not set by default by Node.js. Make sure to set it
+explicitly (e.g., `NODE_ENV=development`) in your environment.
+
+See [`src/config/env.ts`](src/config/env.ts) for the full
+
 ## 🔄 Continuous Integration
 
 This project uses GitHub Actions for CI/CD automation. The workflows are defined
