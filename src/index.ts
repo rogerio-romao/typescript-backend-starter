@@ -2,7 +2,7 @@
 import { consola } from 'consola';
 
 // config
-import env from './config/env';
+import env from './config/parsedEnv';
 
 export default function sum(a: number, b: number): number {
     return a + b;
