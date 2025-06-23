@@ -127,6 +127,7 @@ The pre-commit hook automatically runs the following checks:
     `pnpm typecheck`
 -   **Build**: Ensures the project builds successfully with `pnpm build`
 -   **Tests**: Runs the full test suite with `pnpm test:ci`
+-   **Knip**: Finds and fixes unused dependencies, exports and files.
 
 The pre-commit hook runs commands in the following order:
 
@@ -134,6 +135,7 @@ The pre-commit hook runs commands in the following order:
 2. **typecheck** - TypeScript type checking
 3. **build** - Project compilation
 4. **test:ci** - Full test suite
+5. **knip** - Unused dependencies cleanup
 
 If any step fails, the commit is blocked.
 
