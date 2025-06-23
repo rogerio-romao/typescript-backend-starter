@@ -1,11 +1,11 @@
-import dotenv from 'dotenv';
 import { defineConfig } from 'vitest/config';
-
-dotenv.config();
 
 export default defineConfig({
     test: {
         environment: 'node',
-        env: process.env,
+        env: {
+            NODE_ENV: 'test',
+            PORT: '3000',
+        },
     },
 });
