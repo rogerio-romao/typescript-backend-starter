@@ -23,8 +23,6 @@ function parseEnv<T extends ZodRawShape>(
     }
 }
 
-// export type Env = z.infer<typeof envSchema>;
-
 parseEnv(envSchema);
 
 export default envSchema.parse(process.env);
