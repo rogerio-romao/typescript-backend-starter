@@ -1,6 +1,6 @@
 {
     "name": "typescript-backend-starter",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "description": "Starter config and linting for typescript backend",
     "repository": {
         "type": "git",
@@ -24,6 +24,7 @@
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
         "prepare": "husky",
+        "release": "pnpm dlx changelogen --release --push",
         "start": "node dist/index.js",
         "test": "vitest",
         "test:ci": "vitest --run",
