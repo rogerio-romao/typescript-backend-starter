@@ -120,9 +120,12 @@ before commits:
 
 ### Pre-commit Hook
 
-The pre-commit hook automatically runs on staged files:
+The pre-commit hook automatically runs the following checks:
 
 -   **ESLint**: Fixes linting issues automatically with `--fix` on staged files
+-   **Type Check**: Runs TypeScript compiler to verify types with
+    `pnpm typecheck`
+-   **Build**: Ensures the project builds successfully with `pnpm build`
 -   **Tests**: Runs the full test suite with `pnpm test:ci`
 
 Configuration is in `package.json`:

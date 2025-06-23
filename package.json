@@ -25,7 +25,8 @@
         "prepare": "husky",
         "start": "node dist/index.js",
         "test": "vitest",
-        "test:ci": "vitest --run"
+        "test:ci": "vitest --run",
+        "typecheck": "tsc --noEmit"
     },
     "lint-staged": {
         "*.{js,ts,json}": [
