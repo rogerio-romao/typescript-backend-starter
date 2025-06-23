@@ -122,7 +122,7 @@ before commits:
 
 The pre-commit hook automatically runs on staged files:
 
--   **ESLint**: Fixes linting issues automatically with `--fix`
+-   **ESLint**: Fixes linting issues automatically with `--fix` on staged files
 -   **Tests**: Runs the full test suite with `pnpm test:ci`
 
 Configuration is in `package.json`:
@@ -130,8 +130,7 @@ Configuration is in `package.json`:
 ```jsonc
 "lint-staged": {
   "*.{js,ts,json}": [
-    "eslint --fix",
-    "pnpm test:ci"
+    "eslint --fix"
   ]
 }
 ```
