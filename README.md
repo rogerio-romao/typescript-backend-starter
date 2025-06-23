@@ -128,6 +128,15 @@ The pre-commit hook automatically runs the following checks:
 -   **Build**: Ensures the project builds successfully with `pnpm build`
 -   **Tests**: Runs the full test suite with `pnpm test:ci`
 
+The pre-commit hook runs commands in the following order:
+
+1. **lint-staged** - ESLint fixes on staged files
+2. **typecheck** - TypeScript type checking
+3. **build** - Project compilation
+4. **test:ci** - Full test suite
+
+If any step fails, the commit is blocked.
+
 Configuration is in `package.json`:
 
 ```jsonc
