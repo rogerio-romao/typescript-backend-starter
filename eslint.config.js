@@ -711,7 +711,7 @@ export default tseslint.config([
             'promise/no-return-in-finally': 'error',
             'promise/no-return-wrap': 'error',
             'promise/param-names': 'error',
-            'promise/prefer-await-to-callbacks': 'warn',
+            'promise/prefer-await-to-callbacks': 'off', // for this project, since hono has some apis that use the pattern
             'promise/prefer-await-to-then': 'off',
             'promise/prefer-catch': 'warn',
             'promise/spec-only': 'error',
