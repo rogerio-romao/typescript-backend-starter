@@ -3,6 +3,7 @@
 A minimal, opinionated starter template for building Node.js backends in
 TypeScript, with:
 
+-   Hono as the backend framework
 -   Zero-config TypeScript setup
 -   Comprehensive ESLint configuration (very strict, custom config)
 -   Built-in Vitest support for unit testing
