@@ -859,7 +859,7 @@ export default tseslint.config([
                     allowNumber: true,
                     allowBoolean: true,
                     allowAny: false,
-                    allowNullish: false,
+                    allowNullish: true,
                     allowRegExp: false,
                     allowNever: false,
                     allowArray: false,

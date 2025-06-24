@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@hono/node-server':
+        specifier: ^1.14.4
+        version: 1.14.4(hono@4.8.2)
       consola:
         specifier: ^3.4.2
         version: 3.4.2
+      hono:
+        specifier: ^4.8.2
+        version: 4.8.2
       zod:
         specifier: ^3.25.67
         version: 3.25.67
@@ -314,6 +320,12 @@ packages:
     resolution: {integrity: sha512-5VCPu8DayobfpjIARra5M9aj8g8IY2jMHJxjFTc1GLR0JZsApMrUsBCWM+438ZLsB2ip3FnA9tnWStRlHypu6Q==}
     peerDependencies:
       eslint: '>=9.0.0'
+
+  '@hono/node-server@1.14.4':
+    resolution: {integrity: sha512-DnxpshhYewr2q9ZN8ez/M5mmc3sucr8CT1sIgIy1bkeUXut9XWDkqHoFHRhWIQgkYnKpVRxunyhK7WzpJeJ6qQ==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      hono: ^4
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -1400,6 +1412,10 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
+
+  hono@4.8.2:
+    resolution: {integrity: sha512-hM+1RIn9PK1I6SiTNS6/y7O1mvg88awYLFEuEtoiMtRyT3SD2iu9pSFgbBXT3b1Ua4IwzvSTLvwO0SEhDxCi4w==}
+    engines: {node: '>=16.9.0'}
 
   husky@9.1.7:
     resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
@@ -2590,6 +2606,10 @@ snapshots:
     dependencies:
       comment-json: 4.2.5
       eslint: 9.28.0(jiti@2.4.2)
+
+  '@hono/node-server@1.14.4(hono@4.8.2)':
+    dependencies:
+      hono: 4.8.2
 
   '@humanfs/core@0.19.1': {}
 
@@ -3863,6 +3883,8 @@ snapshots:
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
+
+  hono@4.8.2: {}
 
   husky@9.1.7: {}
 
