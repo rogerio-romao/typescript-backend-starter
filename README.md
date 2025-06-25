@@ -76,6 +76,7 @@ pnpm run start
 -   Environment variable validation with Zod
 -   GitHub Actions for CI/CD
 -   **Hono** as the backend framework for fast, modern routing and middleware
+-   Zod validator for the Hono endpoints
 -   Built-in support for serving static files and favicon
 
 ---
