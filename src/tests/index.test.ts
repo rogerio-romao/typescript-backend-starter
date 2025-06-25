@@ -19,8 +19,8 @@ describe('Hono App Tests', () => {
         expect(json).toEqual({ status: 'ok' });
     });
 
-    test('GET /testError should throw an error', async () => {
-        const res = await app.request('/testError');
+    test('GET /test-error should throw an error', async () => {
+        const res = await app.request('/test-error');
         const text = await res.text();
 
         expect(res.status).toBe(500);

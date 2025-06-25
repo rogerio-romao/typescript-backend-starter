@@ -15,7 +15,7 @@ describe('API Routes', () => {
     });
 
     describe('validator test API routes', () => {
-        test('POST /testValidator valid body', async () => {
+        test('POST /test-validator valid body', async () => {
             const { json, response } = await arrangeValidatorTests(
                 25,
                 'John Doe'
@@ -28,7 +28,7 @@ describe('API Routes', () => {
             });
         });
 
-        test('POST /testValidator missing optional', async () => {
+        test('POST /test-validator missing optional', async () => {
             // Test with only the name provided, age is optional
             const { json, response } = await arrangeValidatorTests(
                 undefined,
@@ -41,7 +41,7 @@ describe('API Routes', () => {
             });
         });
 
-        test('POST /testValidator invalid params', async () => {
+        test('POST /test-validator invalid params', async () => {
             // Test with invalid age and name
             const { json, response } = await arrangeValidatorTests(-5, 'A');
 
@@ -55,7 +55,7 @@ describe('API Routes', () => {
             });
         });
 
-        test('POST /testValidator missing params', async () => {
+        test('POST /test-validator missing params', async () => {
             // Test with missing params
             const { json, response } = await arrangeValidatorTests();
 

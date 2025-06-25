@@ -7,7 +7,7 @@ export default async function arrangeValidatorTests(
     json: unknown;
     response: Response;
 }> {
-    const response = await apiTestRoutes.request('/testValidator', {
+    const response = await apiTestRoutes.request('/test-validator', {
         body: JSON.stringify({
             age,
             name,
