@@ -802,7 +802,7 @@ export default tseslint.config([
                 {
                     builtinGlobals: true,
                     hoist: 'all',
-                    allow: [],
+                    allow: ['name'],
                     ignoreOnInitialization: false,
                     ignoreTypeValueShadow: true,
                     ignoreFunctionTypeParameterNameValueShadow: true,

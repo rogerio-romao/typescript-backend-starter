@@ -1,10 +1,12 @@
 import { serve } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { Hono } from 'hono';
+import { HTTPException } from 'hono/http-exception';
 
 import env from '@/config/parsedEnv';
 import consola from '@/lib/consola';
 import api from '@/routes/api';
+import apiTestRoutes from '@/routes/api-test-routes';
 
 export const app = new Hono();
 
@@ -21,10 +23,14 @@ app.get('/testError', () => {
 
 // API Routes
 app.route('/api/v1', api);
+app.route('/api/v1/testRoutes', apiTestRoutes);
 
 // 404 and Error Handling
 app.notFound((c) => c.text('This route does not exist', 404));
 app.onError((err, c) => {
+    if (err instanceof HTTPException) {
+        return err.getResponse();
+    }
     consola.error(err);
     return c.text('Internal Server Error', 500);
 });
