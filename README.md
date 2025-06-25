@@ -3,6 +3,7 @@
 A minimal, opinionated starter template for building Node.js backends in
 TypeScript, with:
 
+-   Hono as the backend framework
 -   Zero-config TypeScript setup
 -   Comprehensive ESLint configuration (very strict, custom config)
 -   Built-in Vitest support for unit testing
@@ -74,6 +75,36 @@ pnpm run start
 -   Husky & lint-staged for pre-commit quality checks
 -   Environment variable validation with Zod
 -   GitHub Actions for CI/CD
+-   **Hono** as the backend framework for fast, modern routing and middleware
+-   Zod validator for the Hono endpoints
+-   Built-in support for serving static files and favicon
+
+---
+
+## ⚡ Hono Backend
+
+This project uses [Hono](https://hono.dev/) as the backend framework, providing
+a lightweight, modern, and fast routing layer for Node.js.
+
+**Current endpoints and middleware:**
+
+-   `GET /` — Returns `Hello, World!`
+-   `GET /health` — Health check endpoint, returns `{ status: 'ok' }`
+-   `GET /testError` — Simulates an error, returns a 500 response
+-   `GET /favicon.ico` — Serves a static favicon
+-   `GET /static/*` — Serves static files from the public directory
+-   404 handler — Returns `This route does not exist` for unknown routes
+
+**Middleware:**
+
+-   Error handling middleware for clean error responses
+-   Static file serving middleware
+-   Favicon middleware
+
+**Testing:**
+
+-   Basic tests are included for all main endpoints and error cases, ensuring
+    reliability and quick feedback during development.
 
 ---
 
