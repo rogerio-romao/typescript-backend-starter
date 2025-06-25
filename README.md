@@ -1,4 +1,4 @@
-# typescript-backend-starter v2.0.0
+# typescript-backend-starter v3.0.0
 
 A minimal, opinionated starter template for building Node.js backends in
 TypeScript, with:
