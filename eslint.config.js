@@ -545,7 +545,7 @@ export default tseslint.config([
             'import/group-exports': 'off',
             'import/max-dependencies': [
                 'warn',
-                { max: 15, ignoreTypeImports: true },
+                { max: 25, ignoreTypeImports: true },
             ],
             'import/newline-after-import': 'error',
             'import/no-anonymous-default-export': 'warn',

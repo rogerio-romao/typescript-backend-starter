@@ -3,12 +3,12 @@ import { describe, expect, test } from 'vitest';
 import { app } from '@/index';
 
 describe('Hono App Tests', () => {
-    test('GET / should return Hello, World!', async () => {
+    test('GET / should return Typescript Backend Starter!', async () => {
         const res = await app.request('/');
         const text = await res.text();
 
         expect(res.status).toBe(200);
-        expect(text).toBe('Hello, World!');
+        expect(text).toBe('Typescript Backend Starter!');
     });
 
     test('GET /health should return status ok', async () => {
