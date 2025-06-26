@@ -1,7 +1,15 @@
 import { serve } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { Hono } from 'hono';
+import { cors } from 'hono/cors';
+import { csrf } from 'hono/csrf';
+import { etag } from 'hono/etag';
 import { HTTPException } from 'hono/http-exception';
+import { logger } from 'hono/logger';
+import { requestId } from 'hono/request-id';
+import { secureHeaders } from 'hono/secure-headers';
+import { timeout } from 'hono/timeout';
+import { trimTrailingSlash } from 'hono/trailing-slash';
 
 import env from '@/config/parsedEnv';
 import consola from '@/lib/consola';
@@ -13,9 +21,32 @@ export const app = new Hono();
 // Middlewares
 app.use('/favicon.ico', serveStatic({ path: './favicon.ico' }));
 app.use('/static/*', serveStatic({ root: './' }));
+app.use(
+    '*',
+    cors({
+        allowHeaders: [], // Add any custom headers you want to allow
+        allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        credentials: true, // Allow credentials if needed
+        exposeHeaders: [], // Add any custom headers you want to expose
+        maxAge: 3600 * 2, // Cache preflight response for 2 hours
+        origin: ['https://example.com'], // Replace with allowed origins
+    })
+);
+app.use(csrf({ origin: ['https://example.com'] })); // Replace with your actual origin
+app.use('*', etag()); // Enable ETag support for caching
+app.use(logger());
+app.use('*', requestId());
+app.use('*', async (c, next) => {
+    // Custom middleware to log the request ID
+    consola.info(`${c.req.path} - Request ID: ${c.get('requestId')}`);
+    return next();
+});
+app.use(secureHeaders());
+app.use(timeout(30_000)); // Set a timeout of 30 seconds for all requests
+app.use(trimTrailingSlash());
 
 // App Routes
-app.get('/', (c) => c.text('Hello, World!'));
+app.get('/', (c) => c.text('Typescript Backend Starter!'));
 app.get('/health', (c) => c.json({ status: 'ok' }));
 app.get('/test-error', () => {
     throw new Error('This is a test error');

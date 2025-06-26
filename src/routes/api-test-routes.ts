@@ -1,9 +1,9 @@
 import { Hono } from 'hono';
 
-import testValidatorSchema from '@/schemas/test-validator-schema';
+import testValidatorValidator from '@/validators/test-validator-validator';
 
 const apiTestRoutes = new Hono();
 
-apiTestRoutes.post('/test-validator', testValidatorSchema());
+apiTestRoutes.post('/test-validator', testValidatorValidator());
 
 export default apiTestRoutes;
