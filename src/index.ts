@@ -54,15 +54,15 @@ app.get('/test-error', () => {
 });
 app.get('/test-fetching', async (c) => {
     const response = await tchef<{
-        userId: number;
+        body: string;
         id: number;
         title: string;
-        body: string;
+        userId: number;
     }>('https://jsonplaceholder.typicode.com/posts/1');
     if (!response.ok) {
         throw new HTTPException(500, {
-            message: 'Failed to fetch data from external API',
             cause: response.error,
+            message: 'Failed to fetch data from external API',
         });
     }
 
