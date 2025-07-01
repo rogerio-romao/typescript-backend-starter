@@ -48,7 +48,7 @@
         "@gitbutler/no-relative-imports": "^0.0.3",
         "@types/node": "^24.0.8",
         "esbuild": "^0.25.5",
-        "eslint": "^9.28.0",
+        "eslint": "^9.30.1",
         "eslint-plugin-error-cause": "^1.2.9",
         "eslint-plugin-eslint-comments": "^3.2.0",
         "eslint-plugin-import": "^2.31.0",
