@@ -7,6 +7,8 @@ TypeScript, with:
 -   Zero-config TypeScript setup
 -   Comprehensive ESLint configuration (very strict, custom config)
 -   Built-in Vitest support for unit testing
+-   **Tchef** for robust HTTP fetching with result-type returns, retries,
+    timeouts, and aborts ([GitHub](https://github.com/rogerio-romao/tchef))
 
 ---
 
@@ -78,6 +80,8 @@ pnpm run start
 -   **Hono** as the backend framework for fast, modern routing and middleware
 -   Zod validator for the Hono endpoints
 -   Built-in support for serving static files and favicon
+-   **Tchef** for robust HTTP fetching with result-type returns, retries,
+    timeouts, and aborts
 
 ---
 

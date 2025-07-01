@@ -20,6 +20,9 @@ importers:
       hono:
         specifier: ^4.8.2
         version: 4.8.2
+      tchef:
+        specifier: ^0.4.14
+        version: 0.4.14
       zod:
         specifier: ^3.25.67
         version: 3.25.67
@@ -2179,6 +2182,10 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  tchef@0.4.14:
+    resolution: {integrity: sha512-TCaTpP/lPVuXCbPQNMlKZYHgOBWs6s0SPQxSdl1w19hNM3oUBPHHDQPp0REQ41xLLjED6KxlySWmI/b1cY186w==}
+    engines: {node: '>=21.0.0'}
+
   tinybench@2.9.0:
     resolution: {integrity: sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg==}
 
@@ -2283,6 +2290,9 @@ packages:
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
+
+  valibot@0.30.0:
+    resolution: {integrity: sha512-5POBdbSkM+3nvJ6ZlyQHsggisfRtyT4tVTo1EIIShs6qCdXJnyWU5TJ68vr8iTg5zpOLjXLRiBqNx+9zwZz/rA==}
 
   validate-npm-package-name@6.0.1:
     resolution: {integrity: sha512-OaI//3H0J7ZkR1OqlhGA8cA+Cbk/2xFOQpJOt5+s27/ta9eZwpeervh4Mxh4w0im/kdgktowaqVNR7QOrUd7Yg==}
@@ -4729,6 +4739,10 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
+  tchef@0.4.14:
+    dependencies:
+      valibot: 0.30.0
+
   tinybench@2.9.0: {}
 
   tinyexec@0.3.2: {}
@@ -4868,6 +4882,8 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  valibot@0.30.0: {}
 
   validate-npm-package-name@6.0.1: {}
 

@@ -10,6 +10,7 @@ import { requestId } from 'hono/request-id';
 import { secureHeaders } from 'hono/secure-headers';
 import { timeout } from 'hono/timeout';
 import { trimTrailingSlash } from 'hono/trailing-slash';
+import tchef from 'tchef';
 
 import env from '@/config/parsedEnv';
 import consola from '@/lib/consola';
@@ -50,6 +51,22 @@ app.get('/', (c) => c.text('Typescript Backend Starter!'));
 app.get('/health', (c) => c.json({ status: 'ok' }));
 app.get('/test-error', () => {
     throw new Error('This is a test error');
+});
+app.get('/test-fetching', async (c) => {
+    const response = await tchef<{
+        userId: number;
+        id: number;
+        title: string;
+        body: string;
+    }>('https://jsonplaceholder.typicode.com/posts/1');
+    if (!response.ok) {
+        throw new HTTPException(500, {
+            message: 'Failed to fetch data from external API',
+            cause: response.error,
+        });
+    }
+
+    return c.json(response.data);
 });
 
 // API Routes
