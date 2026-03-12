@@ -11,18 +11,28 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v4
-            - name: Use Node.js 20
-              uses: actions/setup-node@v4
+            - uses: actions/checkout@v6
+            - run: npm i -g --force corepack && corepack enable
+
+            - uses: actions/setup-node@v6
               with:
-                  node-version: 20
-            - name: Install pnpm
-              uses: pnpm/action-setup@v4
-              with:
-                  version: 9.15.1
+                  node-version: lts/*
+                  cache: pnpm
+
             - name: Install dependencies
               run: pnpm install
+
             - name: Run linting
               run: pnpm lint
+
             - name: Run tests
               run: pnpm test:ci
+
+            - name: Build project
+              run: pnpm build
+
+            - name: Run Knip
+              run: pnpm knip
+
+            - name: Run TypeScript type checking
+              run: pnpm typecheck
