@@ -18,10 +18,10 @@ jobs:
                   node-version: lts/*
                   cache: pnpm
 
-            - name: Enable Corepack and install latest pnpm
+            - name: Enable Corepack and install pnpm
               run: |
                   corepack enable
-                  corepack prepare pnpm@latest --activate
+                  corepack install pnpm
 
             - name: Install dependencies
               run: pnpm install
