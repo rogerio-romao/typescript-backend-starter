@@ -10,6 +10,7 @@ export default defineConfig({
         env: {
             NODE_ENV: 'test',
             PORT: '3000',
+            ALLOWED_ORIGINS: 'http://localhost:5173',
         },
     },
     resolve: {

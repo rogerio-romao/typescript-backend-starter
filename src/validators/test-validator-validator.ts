@@ -19,7 +19,7 @@ export default function testValidatorValidator(): MiddlewareHandler {
         const { age, name } = result.data;
         return c.json(
             {
-                ...(age != null && { age }),
+                ...(age !== undefined && { age }),
                 message: `Hello, ${name}!`,
             },
             201

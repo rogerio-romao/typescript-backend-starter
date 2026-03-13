@@ -1,6 +1,6 @@
 import apiTestRoutes from '@/routes/api-test-routes';
 
-export default async function arrangeValidatorTests(
+export default async function sendTestRequest(
     age: number | undefined = undefined,
     name: string | undefined = undefined
 ): Promise<{
