@@ -83,6 +83,7 @@ app.use(
             })
     )
 );
+
 // Remove trailing slashes from URLs for consistency
 app.use(trimTrailingSlash());
 
@@ -151,9 +152,7 @@ const server = serve({ fetch: app.fetch, port: env.PORT }, (info) => {
 // Graceful shutdown
 const shutdown = (signal: string) => {
     consola.info(`${signal} received, shutting down gracefully...`);
-    server.close(() => {
-        consola.info('Server closed');
-    });
+    server.close();
 };
 process.on('SIGTERM', () => shutdown('SIGTERM'));
 process.on('SIGINT', () => shutdown('SIGINT'));
