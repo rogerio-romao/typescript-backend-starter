@@ -77,14 +77,12 @@ app.use(secureHeaders());
 app.use(
     timeout(
         30_000,
-        (c) =>
+        () =>
             new HTTPException(503, {
                 message: 'Request timed out',
-                res: c.text('Request timed out', 503),
             })
     )
 );
-
 // Remove trailing slashes from URLs for consistency
 app.use(trimTrailingSlash());
 
@@ -153,7 +151,9 @@ const server = serve({ fetch: app.fetch, port: env.PORT }, (info) => {
 // Graceful shutdown
 const shutdown = (signal: string) => {
     consola.info(`${signal} received, shutting down gracefully...`);
-    server.close();
+    server.close(() => {
+        consola.info('Server closed');
+    });
 };
 process.on('SIGTERM', () => shutdown('SIGTERM'));
 process.on('SIGINT', () => shutdown('SIGINT'));
