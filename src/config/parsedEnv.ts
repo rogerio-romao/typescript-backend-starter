@@ -2,6 +2,7 @@ import { consola } from 'consola';
 import { type ZodObject, type ZodRawShape, z } from 'zod';
 
 const envSchema = z.object({
+    ALLOWED_ORIGINS: z.string().default('http://localhost:5173'),
     NODE_ENV: z.string(),
     PORT: z.coerce.number().min(1024).max(65_535),
 });

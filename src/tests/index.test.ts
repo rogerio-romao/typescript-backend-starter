@@ -21,10 +21,10 @@ describe('Hono App Tests', () => {
 
     test('GET /test-error should throw an error', async () => {
         const res = await app.request('/test-error');
-        const text = await res.text();
+        const json = await res.json();
 
         expect(res.status).toBe(500);
-        expect(text).toBe('Internal Server Error');
+        expect(json).toEqual({ error: 'Internal Server Error' });
     });
 
     test('GET /favicon.ico should return favicon', async () => {
@@ -41,9 +41,9 @@ describe('Hono App Tests', () => {
 
     test('Non-existent route should return 404', async () => {
         const res = await app.request('/non-existent-route');
-        const text = await res.text();
+        const json = await res.json();
 
         expect(res.status).toBe(404);
-        expect(text).toBe('This route does not exist');
+        expect(json).toEqual({ error: 'This route does not exist' });
     });
 });
