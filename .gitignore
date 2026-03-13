@@ -1,3 +1,5 @@
 node_modules
 dist
 .env
+CODE_REVIEW.md
+coverage
