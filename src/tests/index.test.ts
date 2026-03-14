@@ -66,8 +66,8 @@ describe('Hono App Tests', () => {
     });
 
     test('returns 429 after exceeding rate limit', async () => {
-        // eslint-disable-next-line sonarjs/no-hardcoded-ip -- test fixture IP, not a real address
-        const headers = { 'x-forwarded-for': '10.0.0.1' };
+        const uniqueIp = `10.0.0.${Date.now() % 256}`;
+        const headers = { 'x-forwarded-for': uniqueIp };
 
         for (let i = 0; i < 100; i++) {
             await app.request('/health', { headers });

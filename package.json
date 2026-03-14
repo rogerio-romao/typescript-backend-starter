@@ -22,7 +22,7 @@
         "dev:tsc": "tsc --watch --preserveWatchOutput --noEmit",
         "knip": "knip",
         "lint": "eslint",
-        "lint:fix": "eslint --fix .",
+        "lint:fix": "eslint --fix",
         "prepare": "husky",
         "release": "pnpm dlx changelogen --release --push",
         "start": "node dist/index.js",

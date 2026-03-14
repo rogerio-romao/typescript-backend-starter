@@ -90,7 +90,10 @@ export function setupMiddleware(app: Hono): void {
                         ? (getConnInfo(c).remote.address ?? '')
                         : (xff.split(',').at(0)?.trim() ?? '');
                 } catch {
-                    return c.req.header('x-forwarded-for') ?? '';
+                    consola.warn(
+                        'Failed to get client IP for rate limiting, defaulting to empty string'
+                    );
+                    return '';
                 }
             },
             limit: 100, // Limit each client to 100 requests per window
