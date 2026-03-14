@@ -20,8 +20,6 @@ import consola from '@/lib/consola';
 import api from '@/routes/api';
 import apiTestRoutes from '@/routes/api-test-routes';
 
-const allowedOrigins = env.ALLOWED_ORIGINS.split(',').map((o) => o.trim());
-
 export const app = new Hono();
 
 // Middlewares
@@ -39,12 +37,12 @@ app.use(
         credentials: true,
         exposeHeaders: [],
         maxAge: 3600 * 2,
-        origin: allowedOrigins,
+        origin: env.ALLOWED_ORIGINS,
     })
 );
 
 // CSRF protection
-app.use(csrf({ origin: allowedOrigins }));
+app.use(csrf({ origin: env.ALLOWED_ORIGINS }));
 
 // Body parsing and size limit
 app.use(
@@ -52,7 +50,7 @@ app.use(
         // Limit request body to 4MB
         maxSize: 4 * 1024 * 1024,
         onError(c) {
-            return c.text('Request body is too large', 413);
+            return c.json({ error: 'Request body is too large' }, 413);
         },
     })
 );
@@ -92,11 +90,10 @@ app.use(
         keyGenerator(c) {
             // Get IP from reverse proxy (e.g. Nginx, Cloudflare) OR direct connection in Node.js
             try {
-                return (
-                    c.req.header('x-forwarded-for') ??
-                    getConnInfo(c).remote.address ??
-                    ''
-                );
+                const xff = c.req.header('x-forwarded-for');
+                return xff === undefined
+                    ? (getConnInfo(c).remote.address ?? '')
+                    : (xff.split(',').at(0)?.trim() ?? '');
             } catch {
                 return c.req.header('x-forwarded-for') ?? '';
             }
@@ -120,7 +117,7 @@ app.get('/test-fetching', async (c) => {
         userId: number;
     }>('https://jsonplaceholder.typicode.com/posts/1');
     if (!response.ok) {
-        throw new HTTPException(500, {
+        throw new HTTPException(502, {
             cause: response.error,
             message: 'Failed to fetch data from external API',
         });
@@ -137,7 +134,7 @@ app.route('/api/v1/test-routes', apiTestRoutes);
 app.notFound((c) => c.json({ error: 'This route does not exist' }, 404));
 app.onError((err, c) => {
     if (err instanceof HTTPException) {
-        return err.getResponse();
+        return c.json({ error: err.message }, err.status);
     }
     consola.error(err.message);
     return c.json({ error: 'Internal Server Error' }, 500);

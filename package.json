@@ -13,7 +13,7 @@
         "url": "https://rogerioromao.dev"
     },
     "type": "module",
-    "main": "index.js",
+    "main": "dist/index.js",
     "scripts": {
         "build": "node esbuild.config.js",
         "dev": "run-p dev:*",
@@ -21,7 +21,7 @@
         "dev:node": "node --env-file=.env --watch dist/index.js",
         "dev:tsc": "tsc --watch --preserveWatchOutput --noEmit",
         "knip": "knip",
-        "lint": "eslint .",
+        "lint": "eslint",
         "lint:fix": "eslint --fix .",
         "prepare": "husky",
         "release": "pnpm dlx changelogen --release --push",
@@ -33,7 +33,7 @@
     },
     "lint-staged": {
         "*.{js,ts,json}": [
-            "eslint ."
+            "eslint"
         ]
     },
     "dependencies": {
